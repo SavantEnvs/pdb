@@ -1,0 +1,12 @@
+# Mayhem target: pdb's MSVC PDB parser (PDB::open + pdb/type/id/debug information
+# streams — upstream's own fuzz/fuzz_targets/pdb_parse.rs).
+# Built by mayhem/build.sh as a libFuzzer binary (cargo-fuzz) at /mayhem/pdb_parse.
+# Target name `pdb-parse` preserved from the fork's original Mayhemfile.
+project: savantenvs/pdb
+target: pdb-parse
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/pdb-parse/testsuite
+cmds:
+  - cmd: /mayhem/pdb_parse
+    libfuzzer: true
